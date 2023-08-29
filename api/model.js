@@ -4,12 +4,12 @@ const { Schema, model } = mongoose;
 
 const MemoSchema = new Schema({
   update_time: {
-    type: Date,
-    default: Date.now(),
+    type: Number,
+    default: () => Date.now(),
   },
   create_time: {
-    type: Date,
-    default: Date.now(),
+    type: Number,
+    default: () => Date.now(),
   },
   texts: { type: String, require: true },
 });

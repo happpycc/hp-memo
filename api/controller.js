@@ -12,7 +12,7 @@ const vertifyTexts = (texts) => {
 
 export const getAllMemos = async (_, res) => {
   await MemoModel.find()
-    .sort({ create_time: -1 })
+    .sort({ update_time: -1 })
     .then((memos) => res.json(memos))
     .catch((err) => {
       console.log(err);
@@ -39,8 +39,8 @@ export const addMemo = async (req, res) => {
   }
   const MemoDoc = new MemoModel({ texts });
   await MemoDoc.save()
-    .then((_) => {
-      res.status(200).send("Added a memo successfully.");
+    .then((memo) => {
+      res.status(200).send(memo);
     })
     .catch((err) => {
       console.log(err);
@@ -57,7 +57,7 @@ export const updateMemo = async (req, res) => {
     { _id: req.params.id },
     {
       $set: {
-        update_time: Date.now(),
+        update_time: () => Date.now(),
         texts: texts,
       },
     },

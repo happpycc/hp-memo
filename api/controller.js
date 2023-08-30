@@ -50,6 +50,7 @@ export const addMemo = async (req, res) => {
 
 export const updateMemo = async (req, res) => {
   const { texts } = req.body;
+  const update_time = Date.now();
   if (vertifyTexts(texts)) {
     return res.status(400);
   }
@@ -57,13 +58,13 @@ export const updateMemo = async (req, res) => {
     { _id: req.params.id },
     {
       $set: {
-        update_time: () => Date.now(),
-        texts: texts,
+        update_time,
+        texts,
       },
     },
   )
     .then(() => {
-      res.status(200).send("Updated the memo successfully.");
+      res.status(200).send({ update_time, texts });
     })
     .catch((err) => {
       console.log(err);
@@ -74,7 +75,6 @@ export const updateMemo = async (req, res) => {
 export const deleteMemo = async (req, res) => {
   await MemoModel.deleteOne({ _id: req.params.id })
     .then(() => {
-      console.log(ret);
       res.status(200).send("Deleted the memo successfully.");
     })
     .catch((err) => {

@@ -1,4 +1,4 @@
-import Memo from "./MemoComponents/Memo";
+import Memo from "./Memo/Components/Memo";
 import axios from "axios";
 
 const App = () => {

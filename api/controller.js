@@ -58,7 +58,6 @@ export const updateMemo = async (req, res) => {
     { _id: req.params.id },
     {
       $set: {
-        update_time,
         texts,
       },
     },

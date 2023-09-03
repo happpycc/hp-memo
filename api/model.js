@@ -2,17 +2,17 @@ import mongoose from "mongoose";
 
 const { Schema, model } = mongoose;
 
-const MemoSchema = new Schema({
-  update_time: {
-    type: Number,
-    default: () => Date.now(),
+const MemoSchema = new Schema(
+  {
+    texts: { type: String, require: true },
   },
-  create_time: {
-    type: Number,
-    default: () => Date.now(),
+  {
+    timestamps: {
+      createdAt: "create_time",
+      updatedAt: "update_time",
+    },
   },
-  texts: { type: String, require: true },
-});
+);
 
 const MemoModel = model("Memo", MemoSchema);
 

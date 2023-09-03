@@ -4,7 +4,7 @@ const { Schema, model } = mongoose;
 
 const MemoSchema = new Schema(
   {
-    texts: { type: String, require: true },
+    texts: { type: String, required: true },
   },
   {
     timestamps: {

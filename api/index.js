@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 // routes
-app.use("/api", route);
+app.use(route);
 
 // connect to mongodb
 mongoose

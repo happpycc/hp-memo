@@ -19,7 +19,7 @@ const MemoItem = ({ memo, index }) => {
           <button onClick={() => delete_memo(index)}>Delete</button>
         </div>
       </div>
-      <div className="whitespace-pre-wrap text-black overflow-y-scroll text-lg">
+      <div className="whitespace-pre-wrap text-black overflow-x-auto text-lg">
         {memo.texts}
       </div>
     </div>

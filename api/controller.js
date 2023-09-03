@@ -12,7 +12,7 @@ const vertifyTexts = (texts) => {
 
 export const getAllMemos = async (_, res) => {
   await MemoModel.find()
-    .sort({ update_time: -1 })
+    .sort({ create_time: -1 })
     .then((memos) => res.json(memos))
     .catch((err) => {
       console.log(err);

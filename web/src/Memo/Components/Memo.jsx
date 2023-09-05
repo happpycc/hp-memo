@@ -1,7 +1,5 @@
-import { useContext } from "react";
 import MemoInput from "./MemoInput";
 import MemoList from "./MemoList";
-import { MemoContext } from "../Contexts/MemoContext";
 
 const Memo = () => {
   return (

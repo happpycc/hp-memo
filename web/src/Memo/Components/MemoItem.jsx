@@ -13,13 +13,13 @@ const MemoItem = ({ memo, index }) => {
   return (
     <div className="bg-[#3F4E4F] w-full p-2 flex flex-col rounded-lg">
       <div className="flex justify-between">
-        <div className="text-[#B9B4C7]">{update_time}</div>
+        <div className="text-black text-sm">{update_time}</div>
         <div className="flex gap-2 pr-1">
           <button onClick={handle_edit}>Edit</button>
           <button onClick={() => delete_memo(index)}>Delete</button>
         </div>
       </div>
-      <div className="whitespace-pre-wrap text-black overflow-x-auto text-lg">
+      <div className="whitespace-pre-wrap overflow-x-auto text-base text-[#B9B4C7]">
         {memo.texts}
       </div>
     </div>

@@ -13,6 +13,7 @@ const MemoList = () => {
       {memos.map((memo, index) => (
         <MemoItem key={index} memo={memo} index={index} />
       ))}
+      <button className="border border-black p-1 rounded">Load more</button>
     </div>
   );
 };

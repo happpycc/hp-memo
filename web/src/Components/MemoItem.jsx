@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { MemoContext } from "../Contexts/MemoContext";
+import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 const MemoItem = ({ memo, index }) => {
   const { delete_memo, setEditing, setEditingIndex, setTexts } =
@@ -15,8 +16,12 @@ const MemoItem = ({ memo, index }) => {
       <div className="flex justify-between">
         <div className="text-black text-sm">{update_time}</div>
         <div className="flex gap-2 pr-1">
-          <button onClick={handle_edit}>Edit</button>
-          <button onClick={() => delete_memo(index)}>Delete</button>
+          <button onClick={handle_edit}>
+            <PencilSquareIcon className="h-4 w-4" />
+          </button>
+          <button onClick={() => delete_memo(index)}>
+            <TrashIcon className="h-4 w-4" />
+          </button>
         </div>
       </div>
       <div className="whitespace-pre-wrap overflow-x-auto text-base text-[#B9B4C7]">

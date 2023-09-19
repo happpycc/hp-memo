@@ -10,9 +10,11 @@ const vertifyTexts = (texts) => {
   return false;
 };
 
-export const getAllMemos = async (_, res) => {
+export const getMemos = async (req, res) => {
   await MemoModel.find()
     .sort({ create_time: -1 })
+    .skip(req.params.num)
+    .limit(10)
     .then((memos) => res.json(memos))
     .catch((err) => {
       console.log(err);

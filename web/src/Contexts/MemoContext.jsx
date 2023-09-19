@@ -11,6 +11,9 @@ export function MemoContextProvider({ children }) {
   const [isInputHide, setIsInputHide] = useState(false);
   const [editingIndex, setEditingIndex] = useState({});
   const [editing, setEditing] = useState(false);
+  const load_more = () => {
+    get_memos(memos.length);
+  };
   const delete_memo = (index) => {
     axios
       .delete(`/memo/${memos[index]._id}`)
@@ -37,12 +40,12 @@ export function MemoContextProvider({ children }) {
     setTexts("");
     setEditing(false);
   };
-  const get_memos = () => {
+  const get_memos = (num) => {
     axios
-      .get("/memos")
+      .get(`/memos/${num}`)
       .then((res) => {
         if (res.status === 200) {
-          setMemos(res.data);
+          setMemos((_memos) => [..._memos, ...res.data]);
         }
       })
       .catch((err) => {
@@ -63,7 +66,7 @@ export function MemoContextProvider({ children }) {
     });
   };
   useEffect(() => {
-    get_memos();
+    get_memos(0);
   }, []);
 
   return (
@@ -81,6 +84,7 @@ export function MemoContextProvider({ children }) {
         setEditing,
         setEditingIndex,
         update_memo,
+        load_more,
       }}
     >
       {children}

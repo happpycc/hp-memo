@@ -3,7 +3,7 @@ import MemoItem from "./MemoItem";
 import { MemoContext } from "../Contexts/MemoContext";
 
 const MemoList = () => {
-  const { memos, isInputHide } = useContext(MemoContext);
+  const { memos, isInputHide, load_more } = useContext(MemoContext);
   return (
     <div
       className={`w-full ${
@@ -13,7 +13,12 @@ const MemoList = () => {
       {memos.map((memo, index) => (
         <MemoItem key={index} memo={memo} index={index} />
       ))}
-      <button className="border border-black p-1 rounded">Load more</button>
+      <button
+        onClick={() => load_more()}
+        className="border border-black p-1 rounded"
+      >
+        Load more
+      </button>
     </div>
   );
 };

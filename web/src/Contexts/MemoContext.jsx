@@ -35,7 +35,12 @@ export function MemoContextProvider({ children }) {
         texts,
       })
       .then((res) => {
-        res.status === 200 && get_memos();
+        res.status === 200 &&
+          setMemos((_memos) => {
+            _memos[editingIndex].update_time = res.data.update_time;
+            _memos[editingIndex].texts = res.data.texts;
+            return [..._memos];
+          });
       });
     setTexts("");
     setEditing(false);

@@ -3,7 +3,7 @@ import axios from "axios";
 import { MemoContextProvider } from ".//Contexts/MemoContext";
 
 const App = () => {
-  axios.defaults.baseURL = "https://happpy.cc/api";
+  axios.defaults.baseURL = "https://happpy.cc/api/memo";
   return (
     <MemoContextProvider>
       <Memo />
